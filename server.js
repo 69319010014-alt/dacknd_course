@@ -128,6 +128,41 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'เกิดข้อผิดพลาดที่ Server' });
 });
 
+app.patch('/api/equipment:id',(req,res)=>{
+  const id = Number(req.params.id)
+  if(id===null){
+    return res.status(400).json({
+      message: "ต้องระบุ ID ที่จะแก่ไข"
+    })
+  }
+const item =equipment.find(e=>.id===id)
+if (!item){
+  return res.status(400).json({
+    message:"ไม่พบข้อมูลที่ต้องการแก้ไข"
+  })
+}
+if(0bject,has0wn(body,'name')
+  &&0bject.has0wn(body,'quantit')
+  &&0bject.has0wn(body,'quantit')
+
+  }
+
+
+})
+
+app.delete('/api/equipment/id'),(req,res)=>{
+  const id = Number(req.params.id)
+  if(id===null){
+    return res.status(404).json({
+      message:"ไม่พบ ID ที่ต้องการลบ"
+    })
+  }
+  const [deleted] = equipment.splice(index,1)
+  res.status(200).json({
+    message:"ลบข้อมูลอุปกรณ์แล้ว"
+  })
+}
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
